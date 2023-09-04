@@ -1,0 +1,4 @@
+deployment:
+tasks:
+  - export DEPLOYPATH=/home/putn1172/public_html/admin.putraevans.my.id/git
+  - /bin/cp -r * $DEPLOYPATH
