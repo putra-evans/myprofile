@@ -181,10 +181,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        // Yajra\Datatables\DataTablesServiceProvider::class,
-        // Yajra\DataTables\Facades\DataTables::class,
-
-        // 'Datatables' => Yajra\DataTables\Facades\DataTables::class
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Package Service Providers...
          */

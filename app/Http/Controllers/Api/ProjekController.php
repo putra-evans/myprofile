@@ -62,7 +62,7 @@ class ProjekController extends Controller
         $validator = Validator::make($request->all(), [
             'id_bhs_pemograman'     => 'required|string',
             'nama_projek'           => 'required|string',
-            'file'                  => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'file'                  => 'required',
             'tahun_pembuatan'       => 'required',
             'tentang_projek'        => 'required',
             'no_urut'               => 'required',

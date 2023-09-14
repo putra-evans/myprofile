@@ -17,22 +17,31 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-striped">
-                    <thead class="text-bold">
-                        <tr>
-                            <th class="text-center" width="5%">No</th>
-                            <th width="20%">Bahasa Pemograman</th>
-                            <th width="20%">Nama Projek</th>
-                            <th class="text-center" width="15%">Tahun</th>
-                            <th class="text-center" width="20%">File</th>
-                            <th class="text-center" width="20%">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="table-border-bottom-0 " id="tbody_projek">
-                    </tbody>
-                </table>
-                <div class="d-flex justify-content-center paginate">
-
+                <div class="row">
+                    <div class="container">
+                        <div class="col-xl-12">
+                            <div class="nav-align-top mb-4">
+                                <ul class="nav nav-pills mb-3" role="tablist" id="ListBhsPemograman">
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="navs-pills-top-home" role="tabpanel">
+                                        <table class="table table-striped" id="ListProjek">
+                                            <thead class="text-bold">
+                                                <tr>
+                                                    <th class="text-center" >No</th>
+                                                    <th>Bahasa Pemograman</th>
+                                                    <th>Nama Projek</th>
+                                                    <th class="text-center">Tahun</th>
+                                                    <th class="text-center">No Urut</th>
+                                                    <th class="text-center">Action</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -76,10 +85,11 @@
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
                                     <label for="id_bhs_pemograman" class="form-label">Bahasa Pemograman</label>
-                                    <select class="form-select" id="id_bhs_pemograman" name="id_bhs_pemograman" required>
+                                    <select class="form-select" id="id_bhs_pemograman" name="id_bhs_pemograman"
+                                        required>
                                         <option value="">--Pilih--</option>
                                         @foreach ($pemograman as $pecah )
-                                            <option value="{{$pecah->id_bhs_pemograman }}">{{$pecah->nama_bahasa }}</option>
+                                        <option value="{{$pecah->id_bhs_pemograman }}">{{$pecah->nama_bahasa }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback"></div>
@@ -164,9 +174,13 @@
                                             <div class="col-12 mb-4 mb-xl-0">
                                                 <div class="demo-inline-spacing mt-3">
                                                     <div class="list-group">
-                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-info" title="Nama Projek">
-                                                            <button type="button" class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3">
-                                                                <span class="fa-solid fa-right-long" style="color: #FFF;"></span>
+                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-custom-class="tooltip-info" title="Nama Projek">
+                                                            <button type="button"
+                                                                class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3">
+                                                                <span class="fa-solid fa-right-long"
+                                                                    style="color: #FFF;"></span>
                                                             </button>
                                                             <div class="w-100">
                                                                 <div class="d-flex justify-content-between">
@@ -176,9 +190,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-info" title="Tahun Pembuatan">
+                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-custom-class="tooltip-info" title="Tahun Pembuatan">
                                                             <button type="button"
-                                                                class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3" >
+                                                                class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3">
                                                                 <span class="fa-solid fa-right-long"
                                                                     style="color: #FFF;"></span>
                                                             </button>
@@ -190,9 +206,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-info" title="Tentang Projek">
+                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-custom-class="tooltip-info" title="Tentang Projek">
                                                             <button type="button"
-                                                                class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3" >
+                                                                class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3">
                                                                 <span class="fa-solid fa-right-long"
                                                                     style="color: #FFF;"></span>
                                                             </button>
@@ -204,9 +222,11 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-info" title="No Urut">
+                                                        <div class="list-group-item list-group-item-action d-flex align-items-center cursor-pointer"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            data-bs-custom-class="tooltip-info" title="No Urut">
                                                             <button type="button"
-                                                                class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3" >
+                                                                class="btn btn-icon btn-success btn-sm waves-effect waves-light me-3">
                                                                 <span class="fa-solid fa-right-long"
                                                                     style="color: #FFF;"></span>
                                                             </button>
@@ -260,9 +280,9 @@
                 <div class="onboarding-content mb-0">
                     <h4 class="onboarding-title text-body">Edit Data projek</h4>
                     <div class="onboarding-info">Bagian ini merupakan tampilan dari halaman <b>Edit projek</b>,
-                        silahkan isi form berikut dengan benar sesuai dengan inputan yang telah disediakan untuk melakukan update data</div>
-                    <form action="#" enctype="multipart/form-data" id="formEdit"
-                        class="needs-validation" novalidate>
+                        silahkan isi form berikut dengan benar sesuai dengan inputan yang telah disediakan untuk
+                        melakukan update data</div>
+                    <form action="#" enctype="multipart/form-data" id="formEdit" class="needs-validation" novalidate>
                         @csrf
                         <input type="hidden" name="_method" value="PATCH">
                         <input type="hidden" name="slug" id="edit_slug" value="">
@@ -270,10 +290,11 @@
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
                                     <label for="id_bhs_pemograman" class="form-label">Bahasa Pemograman</label>
-                                    <select class="form-select dipilih" id="id_bhs_pemograman" name="id_bhs_pemograman" required>
+                                    <select class="form-select dipilih" id="id_bhs_pemograman" name="id_bhs_pemograman"
+                                        required>
                                         <option value="">--Pilih--</option>
                                         @foreach ($pemograman as $pecah )
-                                            <option value="{{$pecah->id_bhs_pemograman }}">{{$pecah->nama_bahasa }}</option>
+                                        <option value="{{$pecah->id_bhs_pemograman }}">{{$pecah->nama_bahasa }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback"></div>
@@ -310,8 +331,8 @@
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
                                     <label for="edit_tentang_projek" class="form-label">Tentang Projek</label>
-                                    <textarea class="form-control" name="tentang_projek" id="edit_tentang_projek" cols="30"
-                                        rows="4" placeholder="Masukan tentang projek..." required></textarea>
+                                    <textarea class="form-control" name="tentang_projek" id="edit_tentang_projek"
+                                        cols="30" rows="4" placeholder="Masukan tentang projek..." required></textarea>
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>

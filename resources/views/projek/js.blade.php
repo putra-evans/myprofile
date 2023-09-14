@@ -23,39 +23,96 @@
         });
     }
     $(document).ready(function () {
-        getAllData();
+        getPemograman();
     });
+
+
     function data_projek(data) {
-        console.log(document.URL);
+        console.log(data);
         var rows = '';
         var i = 0;
         $.each(data, function (key, value) {
-            $('#tbody_projek').append("<tr>\
-                        			<td class='text-center'>" + ++i + "</td>\
-                        			<td>" + value.nama_bahasa + "</td>\
-                        			<td>" + value.nama_projek + "</td>\
-                        			<td class='text-center'>" + value.tahun_pembuatan + "</td>\
-                        			<td class='text-center'><img src='http://127.0.0.1:8000/storage/pemograman/" + value.foto +
-                "' alt='user image' width='40%' class='rounded mx-auto d-block open-img' data-bs-toggle='modal' data-bs-target='#ModalFoto' data-imgku='" +
-                value.foto + "'></td>\
-                        			<td class='text-center'><button type='button' title='Edit data' data-slug='" + value.slug +
-                "' class='btn btn-icon btn-warning waves-effect waves-light BtnEdit'><i class='fa-solid fa-pencil'></i></button>&nbsp;<button type='button' title='Hapus data' data-slug='" +
-                value.slug +
-                "' class='btn btn-icon btn-danger waves-effect waves-light' id='BtnHapus'><span class='fa-regular fa-trash-can'></span></button>&nbsp;<button type='button' title='Detail data' data-slug='" +
-                value.slug + "' class='btn btn-icon btn-primary waves-effect waves-light' id='BtnDetail'><span class='fa-solid fa-circle-info'></span></button></td>\
-                        			</tr>");
+            $('#ListBhsPemograman').append(`<li class="nav-item p-1">
+                                                <button type="button" class="btn btn-primary btn-sm DetailProjek" data-id="${value.slug}" role="tab">${value.nama_bahasa}</button>
+                                            </li>`);
 
                                 });
     }
-    function getAllData() {
-        $('#tbody_projek').empty();
+
+
+    function getPemograman() {
+        $('#ListBhsPemograman').empty();
         loading($('#loading'));
-        axios.get("api/projek")
+        axios.get("api/pemograman")
             .then(function (res) {
                 data_projek(res.data.data)
                 $('#loading').waitMe('hide');
             })
     }
+
+    function getAllData(slug_bahasa) {
+
+        var url = "{{ route('get_projek', ['slug' => ':slug']) }}";
+            url = url.replace(':slug', slug_bahasa);
+
+            console.log(url);
+
+
+        'use strict';
+        var ListProjek = $("#ListProjek").DataTable({
+            dom: 'Bfrtip',
+            responsive: false,
+            scrollX: true,
+            autoWidth: false,
+            bDestroy: true,
+            ajax: url,
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    className: 'text-center'
+                },
+                {
+                    data: 'nama_bahasa',
+                    name: 'nama_bahasa'
+                },
+                {
+                    data: 'nama_projek',
+                    name: 'nama_projek'
+                },
+                {
+                    data: 'tahun_pembuatan',
+                    name: 'tahun_pembuatan',
+                    className: 'text-center'
+                },
+                {
+                    data: 'no_urut',
+                    name: 'no_urut',
+                    className: 'text-center'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    className: 'text-center'
+                },
+            ],
+            columnDefs: [{
+                orderable: false,
+                targets: [0, 1, 2]
+            }],
+        });
+    }
+
+
+
+
+    $(document).on('click', '.DetailProjek', function (e) {
+        e.stopPropagation();
+        let slug_bahasa = $(this).data("id")
+        getAllData(slug_bahasa)
+    });
+
+
+
 
     function resetprojek() {
         $('form#formTambah').trigger('reset');
@@ -229,7 +286,7 @@
     }
 
 
-    $(document).on('click', '.BtnEdit', function (e) {
+    $(document).on('click', '#BtnEdit', function (e) {
         e.stopPropagation();
         reseteditprojek();
         let slug = $(this).data('slug')

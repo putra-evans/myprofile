@@ -55,7 +55,7 @@ class="layout-menu-horizontal menu-horizontal menu bg-menu-theme flex-grow-0">
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('projek') }}" class="menu-link">
+            <a href="{{ route('show_projek') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-star"  style="color: #CA3CFF"></i>
                 Projek
             </a>

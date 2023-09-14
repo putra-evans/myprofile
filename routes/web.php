@@ -40,7 +40,8 @@ Route::get('/riwayat-pendidikan', [PendidikanController::class, 'index'])->name(
 Route::get('/riwayat-organisasi', [OrganisasiController::class, 'index'])->name('riwayat-organisasi');
 Route::get('/riwayat-kerja', [PengalamanController::class, 'index'])->name('riwayat-kerja');
 Route::get('/pemograman', [Ms_PemogramanController::class, 'index'])->name('pemograman');
-Route::get('/projek', [ProjekController::class, 'index'])->name('projek');
+Route::get('/show_projek', [ProjekController::class, 'index'])->name('show_projek');
+Route::get('/get_projek/{slug}', [ProjekController::class, 'ambil_projek'])->name('get_projek');
 
 
 require __DIR__ . '/auth.php';
