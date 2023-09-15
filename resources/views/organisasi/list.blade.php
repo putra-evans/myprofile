@@ -17,24 +17,18 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-striped">
+                <table class="table table-striped" id="ListOrganisasi">
                     <thead class="text-bold">
                         <tr>
-                            <th class="text-center" width="5%">No</th>
-                            <th width="20%">Nama Organisasi</th>
-                            <th width="10%">Tanggal Masuk</th>
-                            <th class="text-center" width="10%">Tanggal Keluar</th>
-                            <th class="text-center" width="15%">Tingkat</th>
-                            <th class="text-center" width="20%">Logo</th>
-                            <th class="text-center" width="20%">Action</th>
+                            <th class="text-center">No</th>
+                            <th>Nama Organisasi</th>
+                            <th>Tingkat Organisasi</th>
+                            <th class="text-center">Logo</th>
+                            <th class="text-center">No Urut</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0 " id="tbody_organisasi">
-                    </tbody>
                 </table>
-                <div class="d-flex justify-content-center paginate">
-
-                </div>
             </div>
         </div>
     </div>

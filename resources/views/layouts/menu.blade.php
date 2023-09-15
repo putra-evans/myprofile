@@ -16,7 +16,7 @@ class="layout-menu-horizontal menu-horizontal menu bg-menu-theme flex-grow-0">
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="{{ route('pemograman') }}" class="menu-link">
+                    <a href="{{ route('show_pemograman') }}" class="menu-link">
                         <i class="menu-icon tf-icons fa-solid fa-code"></i>
                         <div data-i18n="CRM">BHS Pemograman</div>
                     </a>
@@ -31,25 +31,25 @@ class="layout-menu-horizontal menu-horizontal menu bg-menu-theme flex-grow-0">
         </li>
         <!-- Pages -->
         <li class="menu-item">
-            <a href="{{ route('profil') }}" class="menu-link">
+            <a href="{{ route('show_profil') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-id-card" style="color: #FF9F43"></i>
                 Profil
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('riwayat-pendidikan') }}" class="menu-link">
+            <a href="{{ route('show-riwayat-pendidikan') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-graduation-cap" style="color: #28C76F"></i>
                 Riwayat Pendidikan
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('riwayat-organisasi') }}" class="menu-link">
+            <a href="{{ route('show-riwayat-organisasi') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-people-roof" style="color: #7367F0"></i>
                 Riwayat Organisasi
             </a>
         </li>
         <li class="menu-item">
-            <a href="{{ route('riwayat-kerja') }}" class="menu-link">
+            <a href="{{ route('show-riwayat-kerja') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-briefcase"  style="color: #EA5455"></i>
                 Riwayat Kerja
             </a>

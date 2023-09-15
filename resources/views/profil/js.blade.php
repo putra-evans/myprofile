@@ -27,39 +27,90 @@
     });
 
 
-    function data_profile(data) {
-        var rows = '';
-        var i = 0;
-        $.each(data, function (key, value) {
-            $('#tbody_profile').append("<tr>\
-                        			<td class='text-center'>" + ++i + "</td>\
-                        			<td>" + value.nama_lengkap + "</td>\
-                        			<td>" + value.email + "</td>\
-                        			<td class='text-center'>" + value.no_hp + "</td>\
-                        			<td class='text-center'><img src='" + value.foto +
-                "' alt='user image' width='40%' class='rounded mx-auto d-block open-img' data-bs-toggle='modal' data-bs-target='#ModalFoto' data-imgku='" +
-                value.foto + "'></td>\
-                        			<td class='text-center'><button type='button' title='Edit data' data-slug='" + value.slug +
-                "' class='btn btn-icon btn-warning waves-effect waves-light BtnEdit'><i class='fa-solid fa-pencil'></i></button>&nbsp;<button type='button' title='Hapus data' data-slug='" +
-                value.slug +
-                "' class='btn btn-icon btn-danger waves-effect waves-light' id='BtnHapus'><span class='fa-regular fa-trash-can'></span></button>&nbsp;<button type='button' title='Detail data' data-slug='" +
-                value.slug + "' class='btn btn-icon btn-primary waves-effect waves-light' id='BtnDetail'><span class='fa-solid fa-circle-info'></span></button></td>\
-                        			</tr>");
-
-                                });
-    }
-
-
 
     function getAllData() {
-        $('#tbody_profile').empty();
-        loading($('#loading'));
-        axios.get("api/profile")
-            .then(function (res) {
-                data_profile(res.data.data)
-                $('#loading').waitMe('hide');
-            })
-    }
+
+// var url = "{{ route('get_projek', ['slug' => ':slug']) }}";
+//     url = url.replace(':slug', slug_bahasa);
+
+'use strict';
+var ListProfil = $("#ListProfil").DataTable({
+    dom: 'Bfrtip',
+    responsive: false,
+    scrollX: true,
+    autoWidth: false,
+    bDestroy: true,
+    ajax: "{{ route('show_profil') }}",
+    columns: [{
+            data: 'DT_RowIndex',
+            name: 'DT_RowIndex',
+            className: 'text-center'
+        },
+        {
+            data: 'nama_lengkap',
+            name: 'nama_lengkap'
+        },
+        {
+            data: 'email',
+            name: 'email'
+        },
+        {
+            data: 'no_hp',
+            name: 'no_hp',
+            className: 'text-center'
+        },
+        {
+            data: 'foto',
+            name: 'foto',
+            className: 'text-center'
+        },
+        {
+            data: 'action',
+            name: 'action',
+            className: 'text-center'
+        },
+    ],
+    columnDefs: [{
+        orderable: false,
+        targets: [0, 1, 2]
+    }],
+});
+}
+
+
+    // function data_profile(data) {
+    //     var rows = '';
+    //     var i = 0;
+    //     $.each(data, function (key, value) {
+    //         $('#tbody_profile').append("<tr>\
+    //                     			<td class='text-center'>" + ++i + "</td>\
+    //                     			<td>" + value.nama_lengkap + "</td>\
+    //                     			<td>" + value.email + "</td>\
+    //                     			<td class='text-center'>" + value.no_hp + "</td>\
+    //                     			<td class='text-center'><img src='" + value.foto +
+    //             "' alt='user image' width='40%' class='rounded mx-auto d-block open-img' data-bs-toggle='modal' data-bs-target='#ModalFoto' data-imgku='" +
+    //             value.foto + "'></td>\
+    //                     			<td class='text-center'><button type='button' title='Edit data' data-slug='" + value.slug +
+    //             "' class='btn btn-icon btn-warning waves-effect waves-light BtnEdit'><i class='fa-solid fa-pencil'></i></button>&nbsp;<button type='button' title='Hapus data' data-slug='" +
+    //             value.slug +
+    //             "' class='btn btn-icon btn-danger waves-effect waves-light' id='BtnHapus'><span class='fa-regular fa-trash-can'></span></button>&nbsp;<button type='button' title='Detail data' data-slug='" +
+    //             value.slug + "' class='btn btn-icon btn-primary waves-effect waves-light' id='BtnDetail'><span class='fa-solid fa-circle-info'></span></button></td>\
+    //                     			</tr>");
+
+    //                             });
+    // }
+
+
+
+    // function getAllData() {
+    //     $('#tbody_profile').empty();
+    //     loading($('#loading'));
+    //     axios.get("api/profile")
+    //         .then(function (res) {
+    //             data_profile(res.data.data)
+    //             $('#loading').waitMe('hide');
+    //         })
+    // }
 
     $(document).on('click', '.open-img', function (e) {
         e.preventDefault();

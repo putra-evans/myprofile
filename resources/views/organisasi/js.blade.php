@@ -26,41 +26,88 @@
         getAllData();
     });
 
-
-    function data_organisasi(data) {
-        var rows = '';
-        var i = 0;
-        $.each(data, function (key, value) {
-            $('#tbody_organisasi').append("<tr>\
-                        			<td class='text-center'>" + ++i + "</td>\
-                        			<td>" + value.nama_organisasi + "</td>\
-                        			<td>" + value.tanggal_masuk + "</td>\
-                        			<td class='text-center'>" + value.tanggal_keluar + "</td>\
-                        			<td class='text-center'>" + value.tingkat_organisasi + "</td>\
-                        			<td class='text-center'><img src='" + value.logo +
-                "' alt='user image' width='40%' class='rounded mx-auto d-block open-img' data-bs-toggle='modal' data-bs-target='#ModalFoto' data-imgku='" +
-                value.logo + "'></td>\
-                        			<td class='text-center'><button type='button' title='Edit data' data-slug='" + value.slug +
-                "' class='btn btn-icon btn-warning waves-effect waves-light BtnEdit'><i class='fa-solid fa-pencil'></i></button>&nbsp;<button type='button' title='Hapus data' data-slug='" +
-                value.slug +
-                "' class='btn btn-icon btn-danger waves-effect waves-light' id='BtnHapus'><span class='fa-regular fa-trash-can'></span></button>&nbsp;<button type='button' title='Detail data' data-slug='" +
-                value.slug + "' class='btn btn-icon btn-primary waves-effect waves-light' id='BtnDetail'><span class='fa-solid fa-circle-info'></span></button></td>\
-                        			</tr>");
-
-                                });
-    }
-
-
-
     function getAllData() {
-        $('#tbody_organisasi').empty();
-        loading($('#loading'));
-        axios.get(`${url}/api/organisasi`)
-            .then(function (res) {
-                data_organisasi(res.data.data)
-                $('#loading').waitMe('hide');
-            })
+
+        // var url = "{{ route('get_projek', ['slug' => ':slug']) }}";
+        //     url = url.replace(':slug', slug_bahasa);
+
+        'use strict';
+        var ListOrganisasi = $("#ListOrganisasi").DataTable({
+            dom: 'Bfrtip',
+            responsive: false,
+            scrollX: true,
+            autoWidth: false,
+            bDestroy: true,
+            ajax: "{{ route('show-riwayat-organisasi') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    className: 'text-center'
+                },
+                {
+                    data: 'nama_organisasi',
+                    name: 'nama_organisasi'
+                },
+                {
+                    data: 'tingkat_organisasi',
+                    name: 'tingkat_organisasi'
+                },
+                {
+                    data: 'logo',
+                    name: 'logo',
+                    className: 'text-center'
+                },
+                {
+                    data: 'no_urut',
+                    name: 'no_urut',
+                    className: 'text-center'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    className: 'text-center'
+                },
+            ],
+            columnDefs: [{
+                orderable: false,
+                targets: [0, 1, 2]
+            }],
+        });
     }
+
+
+    // function data_organisasi(data) {
+    //     var rows = '';
+    //     var i = 0;
+    //     $.each(data, function (key, value) {
+    //         $('#tbody_organisasi').append("<tr>\
+    //                     			<td class='text-center'>" + ++i + "</td>\
+    //                     			<td>" + value.nama_organisasi + "</td>\
+    //                     			<td>" + value.tanggal_masuk + "</td>\
+    //                     			<td class='text-center'>" + value.tanggal_keluar + "</td>\
+    //                     			<td class='text-center'>" + value.tingkat_organisasi + "</td>\
+    //                     			<td class='text-center'><img src='" + value.logo +
+    //             "' alt='user image' width='40%' class='rounded mx-auto d-block open-img' data-bs-toggle='modal' data-bs-target='#ModalFoto' data-imgku='" +
+    //             value.logo + "'></td>\
+    //                     			<td class='text-center'><button type='button' title='Edit data' data-slug='" + value.slug +
+    //             "' class='btn btn-icon btn-warning waves-effect waves-light BtnEdit'><i class='fa-solid fa-pencil'></i></button>&nbsp;<button type='button' title='Hapus data' data-slug='" +
+    //             value.slug +
+    //             "' class='btn btn-icon btn-danger waves-effect waves-light' id='BtnHapus'><span class='fa-regular fa-trash-can'></span></button>&nbsp;<button type='button' title='Detail data' data-slug='" +
+    //             value.slug + "' class='btn btn-icon btn-primary waves-effect waves-light' id='BtnDetail'><span class='fa-solid fa-circle-info'></span></button></td>\
+    //                     			</tr>");
+
+    //                             });
+    // }
+
+    // function getAllData() {
+    //     $('#tbody_organisasi').empty();
+    //     loading($('#loading'));
+    //     axios.get(`${url}/api/organisasi`)
+    //         .then(function (res) {
+    //             data_organisasi(res.data.data)
+    //             $('#loading').waitMe('hide');
+    //         })
+    // }
 
     $(document).on('click', '.open-img', function (e) {
         e.preventDefault();

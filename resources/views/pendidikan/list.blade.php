@@ -17,19 +17,17 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-striped">
+                <table class="table table-striped" id="ListPendidikan">
                     <thead class="text-bold">
                         <tr>
-                            <th class="text-center" width="5%">No</th>
-                            <th width="25%">Nama Pendidikan</th>
-                            <th width="15%">Tanggal Masuk</th>
-                            <th class="text-center" width="15%">Tanggal Keluar</th>
-                            <th class="text-center" width="20%">Logo</th>
-                            <th class="text-center" width="20%">Action</th>
+                            <th class="text-center">No</th>
+                            <th>Nama Pendidikan</th>
+                            <th>Jurusan</th>
+                            <th class="text-center">Logo</th>
+                            <th class="text-center">Nilai</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0 " id="tbody_pendidikan">
-                    </tbody>
                 </table>
                 <div class="d-flex justify-content-center paginate">
 

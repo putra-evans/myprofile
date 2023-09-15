@@ -25,36 +25,91 @@
     $(document).ready(function () {
         getAllData();
     });
-    function data_pemograman(data) {
-        var rows = '';
-        var i = 0;
-        $.each(data, function (key, value) {
-            $('#tbody_pemograman').append("<tr>\
-                        			<td class='text-center'>" + ++i + "</td>\
-                        			<td>" + value.nama_bahasa + "</td>\
-                        			<td>" + value.tentang_bahasa + "</td>\
-                        			<td class='text-center'>" + value.no_urut + "</td>\
-                        			<td class='text-center'><img src='" + value.foto +
-                "' alt='user image' width='40%' class='rounded mx-auto d-block open-img' data-bs-toggle='modal' data-bs-target='#ModalFoto' data-imgku='" +
-                value.foto + "'></td>\
-                        			<td class='text-center'><button type='button' title='Edit data' data-slug='" + value.slug +
-                "' class='btn btn-icon btn-warning waves-effect waves-light BtnEdit'><i class='fa-solid fa-pencil'></i></button>&nbsp;<button type='button' title='Hapus data' data-slug='" +
-                value.slug +
-                "' class='btn btn-icon btn-danger waves-effect waves-light' id='BtnHapus'><span class='fa-regular fa-trash-can'></span></button>&nbsp;<button type='button' title='Detail data' data-slug='" +
-                value.slug + "' class='btn btn-icon btn-primary waves-effect waves-light' id='BtnDetail'><span class='fa-solid fa-circle-info'></span></button></td>\
-                        			</tr>");
 
-                                });
+
+    function getAllData(slug_bahasa) {
+
+        // var url = "{{ route('get_projek', ['slug' => ':slug']) }}";
+        //     url = url.replace(':slug', slug_bahasa);
+
+        'use strict';
+        var ListPemograman = $("#ListPemograman").DataTable({
+            dom: 'Bfrtip',
+            responsive: false,
+            scrollX: true,
+            autoWidth: false,
+            bDestroy: true,
+            ajax: "{{ route('show_pemograman') }}",
+            columns: [{
+                    data: 'DT_RowIndex',
+                    name: 'DT_RowIndex',
+                    className: 'text-center'
+                },
+                {
+                    data: 'nama_bahasa',
+                    name: 'nama_bahasa'
+                },
+                {
+                    data: 'tentang_bahasa',
+                    name: 'tentang_bahasa'
+                },
+                {
+                    data: 'foto',
+                    name: 'foto',
+                    className: 'text-center'
+                },
+                {
+                    data: 'no_urut',
+                    name: 'no_urut',
+                    className: 'text-center'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    className: 'text-center'
+                },
+            ],
+            columnDefs: [{
+                orderable: false,
+                targets: [0, 1, 2]
+            }],
+        });
     }
-    function getAllData() {
-        $('#tbody_pemograman').empty();
-        loading($('#loading'));
-        axios.get("api/pemograman")
-            .then(function (res) {
-                data_pemograman(res.data.data)
-                $('#loading').waitMe('hide');
-            })
-    }
+
+
+
+
+
+    // function data_pemograman(data) {
+    //     var rows = '';
+    //     var i = 0;
+    //     $.each(data, function (key, value) {
+    //         $('#tbody_pemograman').append("<tr>\
+    //                     			<td class='text-center'>" + ++i + "</td>\
+    //                     			<td>" + value.nama_bahasa + "</td>\
+    //                     			<td>" + value.tentang_bahasa + "</td>\
+    //                     			<td class='text-center'>" + value.no_urut + "</td>\
+    //                     			<td class='text-center'><img src='" + value.foto +
+    //             "' alt='user image' width='40%' class='rounded mx-auto d-block open-img' data-bs-toggle='modal' data-bs-target='#ModalFoto' data-imgku='" +
+    //             value.foto + "'></td>\
+    //                     			<td class='text-center'><button type='button' title='Edit data' data-slug='" + value.slug +
+    //             "' class='btn btn-icon btn-warning waves-effect waves-light BtnEdit'><i class='fa-solid fa-pencil'></i></button>&nbsp;<button type='button' title='Hapus data' data-slug='" +
+    //             value.slug +
+    //             "' class='btn btn-icon btn-danger waves-effect waves-light' id='BtnHapus'><span class='fa-regular fa-trash-can'></span></button>&nbsp;<button type='button' title='Detail data' data-slug='" +
+    //             value.slug + "' class='btn btn-icon btn-primary waves-effect waves-light' id='BtnDetail'><span class='fa-solid fa-circle-info'></span></button></td>\
+    //                     			</tr>");
+
+    //                             });
+    // }
+    // function getAllData() {
+    //     $('#tbody_pemograman').empty();
+    //     loading($('#loading'));
+    //     axios.get("api/pemograman")
+    //         .then(function (res) {
+    //             data_pemograman(res.data.data)
+    //             $('#loading').waitMe('hide');
+    //         })
+    // }
 
 
     // INI UNTUK TAMBAH

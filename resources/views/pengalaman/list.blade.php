@@ -17,28 +17,36 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-striped">
+                <table class="table table-striped" id="ListPengalaman">
                     <thead class="text-bold">
                         <tr>
-                            <th class="text-center" width="5%">No</th>
-                            <th width="20%">Nama perusahaan</th>
-                            <th class="text-center" width="10%">Tanggal Masuk</th>
-                            <th class="text-center" width="10%">Tanggal Keluar</th>
-                            <th class="text-center" width="15%">Posisi</th>
-                            <th class="text-center" width="20%">Logo</th>
-                            <th class="text-center" width="20%">Action</th>
+                            <th class="text-center">No</th>
+                            <th>Nama perusahaan</th>
+                            <th class="text-center">Posisi</th>
+                            <th class="text-center">Logo</th>
+                            <th class="text-center">File</th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0 " id="tbody_pengalaman">
-                    </tbody>
                 </table>
-                <div class="d-flex justify-content-center paginate">
-
-                </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Modal Show PDF -->
+<div class="modal fade" id="ModalPdf" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            {{-- <img width="100%" id="imgku" src=""></img> --}}
+            <div class="row justify-content-center">
+                <iframe id="pdfku" src="" width="100%" height="600">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- Modal Show Image -->
 <div class="modal fade" id="ModalFoto" tabindex="-1" aria-hidden="true">
@@ -136,7 +144,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
@@ -245,7 +252,7 @@
                                     </div>
                                 </div>
                                 <div class="row m-3">
-                                    <iframe src="" frameborder="0" height="800px" class="file_pengalaman"></iframe>
+                                    <iframe src="" frameborder="0" width="100%" height="600px" class="file_pengalaman"></iframe>
                                 </div>
                             </div>
                         </div>
@@ -262,7 +269,7 @@
 <!-- Form Detail Modal -->
 
 <!-- Form Edit Modal -->
-<div class="modal-onboarding modal fade animate__animated" data-keyboard="false" data-backdrop="static" id="editOrganisasi"
+<div class="modal-onboarding modal fade animate__animated" data-keyboard="false" data-backdrop="static" id="editPengalaman"
     tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content text-center">
@@ -278,8 +285,8 @@
                         data-app-dark-img="illustrations/boy-verify-email-dark.html">
                 </div>
                 <div class="onboarding-content mb-0">
-                    <h4 class="onboarding-title text-body">Edit Data Riwayat Organisasi</h4>
-                    <div class="onboarding-info">Bagian ini merupakan tampilan dari halaman <b>Edit Data Riwayat Organisasi</b>,
+                    <h4 class="onboarding-title text-body">Edit Data Riwayat Pengalaman Kerja</h4>
+                    <div class="onboarding-info">Bagian ini merupakan tampilan dari halaman <b>Edit Data Riwayat Pengalaman Kerja</b>,
                         silahkan isi form berikut dengan benar sesuai dengan inputan yang telah disediakan untuk melakukan update data</div>
                     <form action="#" enctype="multipart/form-data" id="formEdit"
                         class="needs-validation" novalidate>
@@ -289,35 +296,17 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="edit_nama_organisasi" class="form-label">Nama Organisasi</label>
-                                    <input required class="form-control" placeholder="Masukan nama organisasi..."
-                                        type="text" id="edit_nama_organisasi" name="nama_organisasi">
+                                    <label for="edit_nama_perusahaan" class="form-label">Nama Perusahaan</label>
+                                    <input required class="form-control" placeholder="Masukan nama perusahaan..."
+                                        type="text" id="edit_nama_perusahaan" name="nama_perusahaan">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="edit_jabatan" class="form-label">Jabatan</label>
-                                    <input required class="form-control" placeholder="Masukan jabatan..."
-                                        type="text" id="edit_jabatan" name="jabatan">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="mb-3 required">
-                                    <label for="edit_tentang_organisasi" class="form-label">Tentang Organisasi</label>
-                                    <textarea class="form-control" name="tentang_organisasi" id="edit_tentang_organisasi" cols="30"
-                                        rows="4" placeholder="Masukan tentang organisasi..." required></textarea>
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="mb-3 required">
-                                    <label for="edit_tentang_jabatan" class="form-label">Tentang Jabatan</label>
-                                    <textarea class="form-control" name="tentang_jabatan" id="edit_tentang_jabatan" cols="30"
-                                        rows="4" placeholder="Masukan tentang jabatan..." required></textarea>
+                                    <label for="edit_posisi" class="form-label">Posisi</label>
+                                    <input required class="form-control" placeholder="Masukan nama posisi..."
+                                        type="text" id="edit_posisi" name="posisi">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
@@ -343,42 +332,36 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="edit_kota" class="form-label">Kota</label>
-                                    <input required class="form-control" placeholder="Masukan kota..."
-                                        type="text" id="edit_kota" name="kota">
+                                    <label for="logo" class="form-label">Logo Perusahaan</label>
+                                    <input class="form-control" type="file" id="logo" name="logo" required>
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="edit_provinsi" class="form-label">Provinsi</label>
-                                    <input required class="form-control" placeholder="Masukan provinsi..."
-                                        type="text" id="edit_provinsi" name="provinsi">
+                                    <label for="file" class="form-label">File Pengalaman Kerja</label>
+                                    <input required class="form-control" placeholder="Masukan file..."
+                                        type="file" id="file" name="file">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4">
+                            <div class="col-sm-12">
                                 <div class="mb-3 required">
-                                    <label for="edit_tingkat_organisasi" class="form-label">Tingkat</label>
-                                    <input required class="form-control" placeholder="Masukan tingkat organisasi..." type="text"
-                                        id="edit_tingkat_organisasi" name="tingkat_organisasi">
+                                    <label for="edit_tugas_wewenang" class="form-label">Tugas dan Wewenang</label>
+                                    <textarea class="form-control" name="tugas_wewenang" id="edit_tugas_wewenang" cols="30"
+                                        rows="4" placeholder="Masukan tugas dan wewenang..." required></textarea>
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
-                            <div class="col-sm-4">
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
                                 <div class="mb-3 required">
                                     <label for="edit_no_urut" class="form-label">No Urut</label>
                                     <input required class="form-control" placeholder="Masukan no_urut..." type="number"
                                         id="edit_no_urut" name="no_urut">
-                                    <div class="invalid-feedback"></div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="mb-3">
-                                    <label for="logo" class="form-label">Logo</label>
-                                    <input class="form-control" type="file" id="logo" name="logo">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
@@ -387,7 +370,7 @@
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-label-danger" data-bs-dismiss="modal">Keluar</button>
-                <button type="submit" class="btn btn-primary" id="simpan_edit_organisasi">Simpan</button>
+                <button type="submit" class="btn btn-primary" id="simpan_edit_pengalaman">Simpan</button>
             </div>
             </form>
         </div>

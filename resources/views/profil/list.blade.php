@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="table-responsive text-nowrap">
-                <table class="table table-striped">
+                <table class="table table-striped" id="ListProfil">
                     <thead class="text-bold">
                         <tr>
                             <th class="text-center" width="5%">No</th>
@@ -28,8 +28,6 @@
                             <th class="text-center" width="20%">Action</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0 " id="tbody_profile">
-                    </tbody>
                 </table>
                 <div class="d-flex justify-content-center paginate">
 

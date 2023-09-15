@@ -35,13 +35,15 @@ Route::middleware('auth')->group(function () {
 });
 
 // PROFILE
-Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
-Route::get('/riwayat-pendidikan', [PendidikanController::class, 'index'])->name('riwayat-pendidikan');
-Route::get('/riwayat-organisasi', [OrganisasiController::class, 'index'])->name('riwayat-organisasi');
-Route::get('/riwayat-kerja', [PengalamanController::class, 'index'])->name('riwayat-kerja');
-Route::get('/pemograman', [Ms_PemogramanController::class, 'index'])->name('pemograman');
+Route::get('/show_profil', [ProfilController::class, 'index'])->name('show_profil');
+Route::get('/show-riwayat-pendidikan', [PendidikanController::class, 'index'])->name('show-riwayat-pendidikan');
+Route::get('/show-riwayat-organisasi', [OrganisasiController::class, 'index'])->name('show-riwayat-organisasi');
+Route::get('/show-riwayat-kerja', [PengalamanController::class, 'index'])->name('show-riwayat-kerja');
+
 Route::get('/show_projek', [ProjekController::class, 'index'])->name('show_projek');
 Route::get('/get_projek/{slug}', [ProjekController::class, 'ambil_projek'])->name('get_projek');
+
+Route::get('/show_pemograman', [Ms_PemogramanController::class, 'index'])->name('show_pemograman');
 
 
 require __DIR__ . '/auth.php';
