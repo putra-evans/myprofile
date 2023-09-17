@@ -268,7 +268,7 @@
 <!-- Form Detail Modal -->
 
 <!-- Form Edit Modal -->
-<div class="modal-onboarding modal fade animate__animated" data-keyboard="false" data-backdrop="static" id="editprojek"
+<div class="modal-onboarding modal fade animate__animated" data-keyboard="false" data-backdrop="static" id="editSertifikat"
     tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content text-center">
@@ -295,8 +295,8 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="id_bhs_pemograman" class="form-label">Bahasa Pemograman</label>
-                                    <select class="form-select dipilih" id="id_bhs_pemograman" name="id_bhs_pemograman"
+                                    <label for="id_kategori" class="form-label">Kategori Sertifikat</label>
+                                    <select class="form-select dipilih" id="id_kategori" name="id_kategori"
                                         required>
                                         <option value="">--Pilih--</option>
                                         @foreach ($kategori as $pecah )
@@ -308,9 +308,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="edit_nama_projek" class="form-label">Nama Projek</label>
-                                    <input required class="form-control" placeholder="Masukan nama projek..."
-                                        type="text" id="edit_nama_projek" name="nama_projek">
+                                    <label for="edit_nama_sertifikat" class="form-label">Nama Sertifikat</label>
+                                    <input required class="form-control" placeholder="Masukan nama sertifikat..." type="text" id="edit_nama_sertifikat" name="nama_sertifikat">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
@@ -319,16 +318,14 @@
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
                                     <label for="file" class="form-label">File</label>
-                                    <input required class="form-control" placeholder="Masukan tahun pembuatan..."
-                                        type="file" id="file" name="file">
+                                    <input required class="form-control" placeholder="Masukan tahun pembuatan..." type="file" id="file" name="file">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="edit_tahun_pembuatan" class="form-label">Tahun Pembuatan</label>
-                                    <input required class="form-control" placeholder="Masukan tahun pembuatan..."
-                                        type="text" id="edit_tahun_pembuatan" name="tahun_pembuatan">
+                                    <label for="edit_tahun_sertifikat" class="form-label">Tahun Sertifikat</label>
+                                    <input required class="form-control" placeholder="Masukan tahun sertifikat..." type="text" id="edit_tahun_sertifikat" name="tahun_sertifikat">
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
@@ -336,9 +333,9 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="mb-3 required">
-                                    <label for="edit_tentang_projek" class="form-label">Tentang Projek</label>
-                                    <textarea class="form-control" name="tentang_projek" id="edit_tentang_projek"
-                                        cols="30" rows="4" placeholder="Masukan tentang projek..." required></textarea>
+                                    <label for="edit_tentang_sertifikat" class="form-label">Tentang Sertifikat</label>
+                                    <textarea class="form-control" name="tentang_sertifikat" id="edit_tentang_sertifikat" cols="30"
+                                        rows="4" placeholder="Masukan tentang sertifikat..." required></textarea>
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
@@ -351,6 +348,9 @@
                                 </div>
                             </div>
                         </div>
+
+
+
                 </div>
             </div>
             <div class="modal-footer border-0">

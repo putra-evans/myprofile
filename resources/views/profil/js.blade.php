@@ -41,6 +41,7 @@ var ListProfil = $("#ListProfil").DataTable({
     autoWidth: false,
     bDestroy: true,
     ajax: "{{ route('show_profil') }}",
+    buttons: [],
     columns: [{
             data: 'DT_RowIndex',
             name: 'DT_RowIndex',

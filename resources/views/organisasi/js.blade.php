@@ -39,6 +39,7 @@
             autoWidth: false,
             bDestroy: true,
             ajax: "{{ route('show-riwayat-organisasi') }}",
+            buttons: [],
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',

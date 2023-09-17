@@ -40,6 +40,7 @@
             autoWidth: false,
             bDestroy: true,
             ajax: "{{ route('show_kategori') }}",
+            buttons: [],
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',

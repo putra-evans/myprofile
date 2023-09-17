@@ -63,6 +63,7 @@
             autoWidth: false,
             bDestroy: true,
             ajax: url,
+            buttons: [],
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',

@@ -60,6 +60,8 @@
             autoWidth: false,
             bDestroy: true,
             ajax: url,
+            buttons: [
+            ],
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
@@ -107,15 +109,11 @@
     }
 
 
-
-
     $(document).on('click', '.DetailSertifikat', function (e) {
         e.stopPropagation();
         let slug_bahasa = $(this).data("id")
         getAllData(slug_bahasa)
     });
-
-
 
 
     function resetsertifikat() {
@@ -218,9 +216,6 @@
     });
 
 
-
-
-
     $(document).on('click', '#BtnDetail', function (e) {
         e.stopPropagation();
         let slug = $(this).data('slug')
@@ -285,7 +280,7 @@
         })
     });
 
-    function reseteditprojek() {
+    function resetedit() {
         $('form#formEdit').trigger('reset');
         $('form#formEdit').removeClass('was-validated');
     }
@@ -293,27 +288,27 @@
 
     $(document).on('click', '#BtnEdit', function (e) {
         e.stopPropagation();
-        reseteditprojek();
+        resetedit();
         let slug = $(this).data('slug')
-        $('#editprojek').modal('show');
+        $('#editSertifikat').modal('show');
         getEditData(slug);
     });
 
 
     function getEditData(slug) {
-        loading($('#editprojek'));
-        axios.get(`${url}/api/projek/${slug}`)
+        loading($('#editSertifikat'));
+        axios.get(`${url}/api/sertifikat/${slug}`)
             .then(function (res) {
-                $('#editprojek').waitMe('hide');
+                $('#editSertifikat').waitMe('hide');
                 let data = res.data.data;
                 // $('#fotoku').attr('src', data.foto);
                 $('#edit_slug').val(data.slug);
-                $('#edit_nama_projek').val(data.nama_projek);
-                $('#edit_tahun_pembuatan').val(data.tahun_pembuatan);
-                $('#edit_tentang_projek').val(data.tentang_projek);
+                $('#edit_nama_sertifikat').val(data.nama_sertifikat);
+                $('#edit_tahun_sertifikat').val(data.tahun_sertifikat);
+                $('#edit_tentang_sertifikat').val(data.tentang_sertifikat);
                 $('#edit_no_urut').val(data.no_urut);
-                let id_program = data.id_bhs_pemograman;
-                $('.dipilih option[value="'+id_program+'"]').prop("selected", true);
+                let id_kategori = data.id_kategori;
+                $('.dipilih option[value="'+id_kategori+'"]').prop("selected", true);
             })
     }
 
@@ -337,7 +332,7 @@
             cancelButtonText: 'Tidak, batalkan!',
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.post(`${url}/api/projek/${slug}`, postData)
+                axios.post(`${url}/api/sertifikat/${slug}`, postData)
                     .then(function (response) {
                         swalWithBootstrapButtons.fire({
                             title: 'Berhasil',
@@ -348,7 +343,7 @@
                         });
                         getAllData();
                         $('#formEdit').waitMe('hide');
-                        $('#editprojek').modal('toggle');
+                        $('#editSertifikat').modal('toggle');
 
                     })
                     .catch(function (error) {

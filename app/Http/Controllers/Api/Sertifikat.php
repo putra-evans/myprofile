@@ -27,17 +27,18 @@ class Sertifikat extends Controller
 
         $array_sertifikat = [];
         foreach ($sertifikat as $key => $pecah) {
+            $path = Storage::url('public/sertifikat/' . $pecah->file);
             $array_sertifikat[$pecah->id_kategori][] = array(
+
+
                 'id_sertifikat ' => $pecah->id_sertifikat,
                 'nama_sertifikat' => $pecah->nama_sertifikat,
                 'tahun_sertifikat' => $pecah->tahun_sertifikat,
                 'tentang_sertifikat' => $pecah->tentang_sertifikat,
-                'file' => $pecah->file,
+                'file' => $path,
                 'no_urut' => $pecah->no_urut,
             );
         }
-
-
 
         $array_kategori = [];
         foreach ($kategori as $key => $value) {
@@ -95,10 +96,10 @@ class Sertifikat extends Controller
     public function update(Request $request, string $slug)
     {
         $validator = Validator::make($request->all(), [
-            'id_bhs_pemograman'     => 'required|string',
-            'nama_projek'           => 'required|string',
-            'tahun_pembuatan'       => 'required',
-            'tentang_projek'        => 'required',
+            'id_kategori'           => 'required|string',
+            'nama_sertifikat'       => 'required|string',
+            'tahun_sertifikat'      => 'required',
+            'tentang_sertifikat'    => 'required',
             'no_urut'               => 'required',
         ]);
         if ($validator->fails()) {
@@ -106,42 +107,41 @@ class Sertifikat extends Controller
         }
 
         //find post by ID
-        $projek = ModelsSertifikat::where('slug', $slug)->first();
-        if ($projek == null) {
+        $sertifikat = ModelsSertifikat::where('slug', $slug)->first();
+        if ($sertifikat == null) {
             return new ProfileResource(false, 'Data Tidak Ditemukan!', []);
         }
         //check if image is not empty
         if ($request->hasFile('file')) {
             //upload image
             $file = $request->file('file');
-            $file->storeAs('public/projek', $file->hashName());
+            $file->storeAs('public/sertifikat', $file->hashName());
             //delete old image
-            Storage::delete('public/projek/' . basename($projek->file));
+            Storage::delete('public/sertifikat/' . basename($sertifikat->file));
 
             //update post with new image
-            $projek->update([
-                'id_bhs_pemograman'         => $request->id_bhs_pemograman,
-                'nama_projek'               => $request->nama_projek,
-                'tahun_pembuatan'           => $request->tahun_pembuatan,
-                'tentang_projek'            => $request->tentang_projek,
-                'file'                      => $file->hashName(),
-                'no_urut'                   => $request->no_urut,
+            $sertifikat->update([
+                'id_kategori'         => $request->id_kategori,
+                'nama_sertifikat'     => $request->nama_sertifikat,
+                'tahun_sertifikat'    => $request->tahun_sertifikat,
+                'tentang_sertifikat'  => $request->tentang_sertifikat,
+                'file'                => $file->hashName(),
+                'no_urut'             => $request->no_urut,
             ]);
         } else {
             //update post without image
-            $projek->update([
-                'id_bhs_pemograman'         => $request->id_bhs_pemograman,
-                'nama_projek'               => $request->nama_projek,
-                'tahun_pembuatan'           => $request->tahun_pembuatan,
-                'tentang_projek'            => $request->tentang_projek,
-                'no_urut'                   => $request->no_urut,
+            $sertifikat->update([
+                'id_kategori'         => $request->id_kategori,
+                'nama_sertifikat'     => $request->nama_sertifikat,
+                'tahun_sertifikat'    => $request->tahun_sertifikat,
+                'tentang_sertifikat'  => $request->tentang_sertifikat,
+                'no_urut'             => $request->no_urut,
             ]);
         }
 
         //return response
-        return new ProfileResource(true, 'Data Pemograman Berhasil Diubah!', $projek);
+        return new ProfileResource(true, 'Data Sertifikat Berhasil Diubah!', $sertifikat);
     }
-
 
 
     public function destroy(string $slug)

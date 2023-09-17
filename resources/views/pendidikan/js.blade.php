@@ -40,6 +40,7 @@
             autoWidth: false,
             bDestroy: true,
             ajax: "{{ route('show-riwayat-pendidikan') }}",
+            buttons: [],
             columns: [{
                     data: 'DT_RowIndex',
                     name: 'DT_RowIndex',
