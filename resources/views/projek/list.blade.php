@@ -32,6 +32,8 @@
                                                     <th>Bahasa Pemograman</th>
                                                     <th>Nama Projek</th>
                                                     <th class="text-center">Tahun</th>
+                                                    <th class="text-center">Tentang</th>
+                                                    <th class="text-center">File</th>
                                                     <th class="text-center">No Urut</th>
                                                     <th class="text-center">Action</th>
                                                 </tr>
@@ -48,11 +50,15 @@
     </div>
 </div>
 
-<!-- Modal Show Image -->
-<div class="modal fade" id="ModalFoto" tabindex="-1" aria-hidden="true">
+<!-- Modal Show PDF -->
+<div class="modal fade" id="ModalPdf" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <img width="100%" id="imgku" src=""></img>
+            {{-- <img width="100%" id="imgku" src=""></img> --}}
+            <div class="row justify-content-center">
+                <iframe id="pdfku" src="" width="100%" height="600">
+                </iframe>
+            </div>
         </div>
     </div>
 </div>

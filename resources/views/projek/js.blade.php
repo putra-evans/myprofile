@@ -85,6 +85,16 @@
                     className: 'text-center'
                 },
                 {
+                    data: 'tentang_projek',
+                    name: 'tentang_projek',
+                    className: 'text-center'
+                },
+                {
+                    data: 'file',
+                    name: 'file',
+                    className: 'text-center'
+                },
+                {
                     data: 'no_urut',
                     name: 'no_urut',
                     className: 'text-center'
@@ -102,7 +112,11 @@
         });
     }
 
-
+    $(document).on('click', '.open-pdf', function (e) {
+        e.preventDefault();
+        var pdf = $(this).data('pdfku');
+        $('#pdfku').attr('src', pdf);
+    });
 
 
     $(document).on('click', '.DetailProjek', function (e) {

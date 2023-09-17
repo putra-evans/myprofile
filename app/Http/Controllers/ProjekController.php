@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
+use Illuminate\Support\Facades\Storage;
 
 class ProjekController extends Controller
 {
@@ -44,7 +45,15 @@ class ProjekController extends Controller
                     ';
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('file', function ($item) {
+                // $path = Storage
+                $path = Storage::url('public/projek/' . $item->file);
+                $logo_pdf = Storage::url('public/projek/pdf.svg');
+
+                $file = '<img src="' . $logo_pdf . '" alt="user image" width="50%" class="rounded mx-auto d-block open-pdf" data-bs-toggle="modal" data-bs-target="#ModalPdf" data-pdfku="' . $path . '">';
+                return $file;
+            })
+            ->rawColumns(['action', 'file'])
             ->make(true);
         return view('projek.list', [
             // 'pemograman' => $pemograman
