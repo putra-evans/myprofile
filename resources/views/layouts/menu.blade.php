@@ -22,9 +22,9 @@ class="layout-menu-horizontal menu-horizontal menu bg-menu-theme flex-grow-0">
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="dashboards-ecommerce.html" class="menu-link">
+                    <a href="{{ route('show_kategori') }}" class="menu-link">
                         <i class="menu-icon tf-icons ti ti-atom-2"></i>
-                        <div data-i18n="eCommerce">eCommerce</div>
+                        <div data-i18n="eCommerce">Kategori Sertifikat</div>
                     </a>
                 </li>
             </ul>
@@ -58,6 +58,12 @@ class="layout-menu-horizontal menu-horizontal menu bg-menu-theme flex-grow-0">
             <a href="{{ route('show_projek') }}" class="menu-link">
                 <i class="menu-icon tf-icons fa-solid fa-star"  style="color: #CA3CFF"></i>
                 Projek
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('show_sertifikat') }}" class="menu-link">
+                <i class="menu-icon tf-icons fa-solid fa-file-pdf"  style="color: #F44708"></i>
+                Sertifikat
             </a>
         </li>
 

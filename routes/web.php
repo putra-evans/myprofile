@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\Ms_PemogramanController;
+use App\Http\Controllers\Ms_SertifikatController;
 use App\Http\Controllers\OrganisasiController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PengalamanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\ProjekController;
+use App\Http\Controllers\SertifikatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +46,12 @@ Route::get('/show_projek', [ProjekController::class, 'index'])->name('show_proje
 Route::get('/get_projek/{slug}', [ProjekController::class, 'ambil_projek'])->name('get_projek');
 
 Route::get('/show_pemograman', [Ms_PemogramanController::class, 'index'])->name('show_pemograman');
+
+Route::get('/show_kategori', [Ms_SertifikatController::class, 'index'])->name('show_kategori');
+
+
+Route::get('/show_sertifikat', [SertifikatController::class, 'index'])->name('show_sertifikat');
+Route::get('/get_sertifikat/{slug}', [SertifikatController::class, 'ambil_sertifikat'])->name('get_sertifikat');
 
 
 require __DIR__ . '/auth.php';

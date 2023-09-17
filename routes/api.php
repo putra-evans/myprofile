@@ -24,3 +24,5 @@ Route::apiResource('/organisasi', App\Http\Controllers\Api\OrganisasiController:
 Route::apiResource('/pengalamankerja', App\Http\Controllers\Api\PengalamanController::class);
 Route::apiResource('/pemograman', App\Http\Controllers\Api\Ms_PemogramanController::class);
 Route::apiResource('/projek', App\Http\Controllers\Api\ProjekController::class);
+Route::apiResource('/kategori', App\Http\Controllers\Api\Ms_KatsertifikatController::class);
+Route::apiResource('/sertifikat', App\Http\Controllers\Api\Sertifikat::class);
