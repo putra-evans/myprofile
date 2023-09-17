@@ -16,12 +16,12 @@ class ProjekController extends Controller
     {
 
         $bhs_program = DB::table('ms_pemograman')
-            ->orderBy('no_urut', 'desc')
+            ->orderBy('no_urut', 'asc')
             ->get();
 
 
         $projek = DB::table('ta_projek')
-            ->orderBy('ta_projek.no_urut', 'desc')
+            ->orderBy('ta_projek.no_urut', 'asc')
             ->get();
 
 

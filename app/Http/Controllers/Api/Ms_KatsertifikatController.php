@@ -12,7 +12,7 @@ class Ms_KatsertifikatController extends Controller
 {
     public function index()
     {
-        $posts = Ms_sertifikat::all()->sortByDesc("no_urut")->toArray();
+        $posts = Ms_sertifikat::all()->sortBy("no_urut")->toArray();
         return new ProfileResource(true, 'List Data Kategori Sertifikat', $posts);
     }
 

@@ -14,7 +14,7 @@ class PendidikanController extends Controller
     public function index()
     {
         // $posts = Pendidikan::latest()->paginate(5);
-        $posts = Pendidikan::all()->sortByDesc('no_urut')->toArray();
+        $posts = Pendidikan::all()->sortBy('no_urut')->toArray();
 
         return new ProfileResource(true, 'List Data Pendidikan', $posts);
     }

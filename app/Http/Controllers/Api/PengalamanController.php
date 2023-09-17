@@ -15,7 +15,7 @@ class PengalamanController extends Controller
     public function index()
     {
         // $posts = Pengalaman::latest()->paginate(5);
-        $posts = Pengalaman::all()->sortByDesc('no_urut')->toArray();
+        $posts = Pengalaman::all()->sortBy('no_urut')->toArray();
 
         return new ProfileResource(true, 'List Data Pengalaman Kerja', $posts);
     }

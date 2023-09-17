@@ -295,7 +295,6 @@
             .then(function (res) {
                 $('#editPengalaman').waitMe('hide');
                 let data = res.data.data;
-                console.log(data);
                 // $('#fotoku').attr('src', data.foto);
                 $('#edit_slug').val(data.slug);
                 $('#edit_nama_perusahaan').val(data.nama_perusahaan);

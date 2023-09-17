@@ -20,7 +20,7 @@ class ProfileController extends Controller
         // $posts = Profile::latest()->paginate(5);
 
         //Descending
-        $posts = Profile::all()->sortByDesc("id_profile");
+        $posts = Profile::all()->sortBy("id_profile");
         // $posts = DB::table('tbl_profile')
         //     ->orderBy('id_profile', 'desc')
         //     ->get();

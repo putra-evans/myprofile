@@ -28,7 +28,6 @@
 
 
     function data_projek(data) {
-        console.log(data);
         var rows = '';
         var i = 0;
         $.each(data, function (key, value) {
@@ -54,8 +53,6 @@
 
         var url = "{{ route('get_projek', ['slug' => ':slug']) }}";
             url = url.replace(':slug', slug_bahasa);
-
-            console.log(url);
 
 
         'use strict';

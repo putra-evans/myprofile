@@ -20,14 +20,14 @@ class SertifikatController extends Controller
 
     public function ambil_sertifikat($slug)
     {
-        $data_projek = DB::table('ta_sertifikat')
+        $data = DB::table('ta_sertifikat')
             ->select(
                 'ta_sertifikat.slug as slug_sertifikat',
                 'ta_sertifikat.id_sertifikat',
                 'ta_sertifikat.nama_sertifikat',
                 'ta_sertifikat.tahun_sertifikat',
                 'ta_sertifikat.tentang_sertifikat',
-                'ta_sertifikat.file_projek',
+                'ta_sertifikat.file',
                 'ta_sertifikat.no_urut',
                 'ms_sertifikat.slug',
                 'ms_sertifikat.nama_kategori'
@@ -37,7 +37,7 @@ class SertifikatController extends Controller
             ->orderBy('ta_sertifikat.id_sertifikat', 'DESC')
             ->get();
 
-        return DataTables::of($data_projek)
+        return DataTables::of($data)
             ->addIndexColumn()
             ->addColumn('action', function ($item) {
                 $btn = '<button type="button" data-slug="' . $item->slug_sertifikat . '" title="Edit data" class="btn btn-icon btn-warning waves-effect waves-light" id="BtnEdit"><i class="fa-solid fa-pencil"></i></button>
@@ -45,7 +45,15 @@ class SertifikatController extends Controller
                     ';
                 return $btn;
             })
-            ->rawColumns(['action'])
+            ->addColumn('file', function ($item) {
+                // $path = Storage
+                $path = Storage::url('public/sertifikat/' . $item->file);
+                $logo_pdf = Storage::url('public/sertifikat/pdf.svg');
+
+                $file = '<img src="' . $logo_pdf . '" alt="user image" width="50%" class="rounded mx-auto d-block open-pdf" data-bs-toggle="modal" data-bs-target="#ModalPdf" data-pdfku="' . $path . '">';
+                return $file;
+            })
+            ->rawColumns(['action', 'file'])
             ->make(true);
         return view('sertifikat.list', [
             // 'pemograman' => $pemograman

@@ -16,12 +16,12 @@ class Sertifikat extends Controller
     {
 
         $kategori = DB::table('ms_sertifikat')
-            ->orderBy('no_urut', 'desc')
+            ->orderBy('no_urut', 'asc')
             ->get();
 
 
         $sertifikat = DB::table('ta_sertifikat')
-            ->orderBy('ta_sertifikat.no_urut', 'desc')
+            ->orderBy('ta_sertifikat.no_urut', 'asc')
             ->get();
 
 
@@ -32,7 +32,7 @@ class Sertifikat extends Controller
                 'nama_sertifikat' => $pecah->nama_sertifikat,
                 'tahun_sertifikat' => $pecah->tahun_sertifikat,
                 'tentang_sertifikat' => $pecah->tentang_sertifikat,
-                'file' => $pecah->file_projek,
+                'file' => $pecah->file,
                 'no_urut' => $pecah->no_urut,
             );
         }
@@ -79,7 +79,7 @@ class Sertifikat extends Controller
             'nama_sertifikat'     => $request->nama_sertifikat,
             'tahun_sertifikat'    => $request->tahun_sertifikat,
             'tentang_sertifikat'  => $request->tentang_sertifikat,
-            'file_projek'         => $file->hashName(),
+            'file'         => $file->hashName(),
             'no_urut'             => $request->no_urut,
         ]);
         return new ProfileResource(true, 'Data Sertifikat Berhasil Ditambahkan!', $sertifikat);
@@ -152,7 +152,7 @@ class Sertifikat extends Controller
             return new ProfileResource(false, 'Data Tidak Ditemukan!', []);
         } else {
             //delete image
-            Storage::delete('public/sertifikat/' . basename($sertifikat->file_projek));
+            Storage::delete('public/sertifikat/' . basename($sertifikat->file));
 
             //delete post
             $sertifikat->delete();

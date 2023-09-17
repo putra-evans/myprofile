@@ -28,7 +28,6 @@
 
 
     function data_sertifikat(data) {
-        console.log(data);
         var rows = '';
         var i = 0;
         $.each(data, function (key, value) {
@@ -53,10 +52,6 @@
 
         var url = "{{ route('get_sertifikat', ['slug' => ':slug']) }}";
             url = url.replace(':slug', slug);
-
-            console.log(url);
-
-
         'use strict';
         var ListSertifikat = $("#ListSertifikat").DataTable({
             dom: 'Bfrtip',
@@ -81,6 +76,16 @@
                 {
                     data: 'tahun_sertifikat',
                     name: 'tahun_sertifikat',
+                    className: 'text-center'
+                },
+                {
+                    data: 'tentang_sertifikat',
+                    name: 'tentang_sertifikat',
+                    className: 'text-center'
+                },
+                {
+                    data: 'file',
+                    name: 'file',
                     className: 'text-center'
                 },
                 {
@@ -206,13 +211,14 @@
         })
     });
 
-
-
-    $(document).on('click', '.open-img', function (e) {
+    $(document).on('click', '.open-pdf', function (e) {
         e.preventDefault();
-        var img = $(this).data('imgku');
-        $('#imgku').attr('src', img);
+        var pdf = $(this).data('pdfku');
+        $('#pdfku').attr('src', pdf);
     });
+
+
+
 
 
     $(document).on('click', '#BtnDetail', function (e) {

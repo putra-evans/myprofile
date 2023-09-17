@@ -15,7 +15,7 @@ class OrganisasiController extends Controller
     public function index()
     {
         // $posts = Organisasi::latest()->paginate(5);
-        $posts = Organisasi::all()->sortByDesc('no_urut')->toArray();
+        $posts = Organisasi::all()->sortBy('no_urut')->toArray();
 
         return new ProfileResource(true, 'List Data Organisasi', $posts);
     }

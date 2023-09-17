@@ -13,7 +13,7 @@ class Ms_PemogramanController extends Controller
 {
     public function index()
     {
-        $posts = Pemograman::all()->sortByDesc("no_urut")->toArray();
+        $posts = Pemograman::all()->sortBy("no_urut")->toArray();
         return new ProfileResource(true, 'List Data Bahasa Pemograman', $posts);
     }
 
