@@ -27,7 +27,10 @@ class Sertifikat extends Controller
 
         $array_sertifikat = [];
         foreach ($sertifikat as $key => $pecah) {
-            $path = Storage::url('public/sertifikat/' . $pecah->file);
+
+            $file_path = Storage::url('public/sertifikat/' . $pecah->file);
+            $path = asset($file_path);
+
             $array_sertifikat[$pecah->id_kategori][] = array(
 
 

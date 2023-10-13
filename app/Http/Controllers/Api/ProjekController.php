@@ -27,7 +27,8 @@ class ProjekController extends Controller
 
         $array_projek = [];
         foreach ($projek as $key => $pecah) {
-            $path = Storage::url('public/projek/' . $pecah->file);
+            $file_path = Storage::url('public/projek/' . $pecah->file);
+            $path = asset($file_path);
             $array_projek[$pecah->id_bhs_pemograman][] = array(
 
                 'id_projek ' => $pecah->id_projek,
@@ -43,7 +44,10 @@ class ProjekController extends Controller
 
         $array_bhs = [];
         foreach ($bhs_program as $key => $value) {
-            $path = Storage::url('public/pemograman/' . $value->foto);
+            $file_path = Storage::url('public/pemograman/' . $value->foto);
+            $path = asset($file_path);
+
+
             $array_bhs[$key] = array(
 
                 'id_bhs_pemograman '    => $value->id_bhs_pemograman,

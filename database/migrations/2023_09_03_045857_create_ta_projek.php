@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_projek');
             $table->string('tahun_pembuatan');
             $table->string('tentang_projek');
-            $table->string('file_projek');
+            $table->string('file');
             $table->integer('no_urut');
             $table->timestamps();
         });

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_sertifikat');
             $table->string('tahun_sertifikat');
             $table->string('tentang_sertifikat');
-            $table->string('file_projek');
+            $table->string('file');
             $table->integer('no_urut');
             $table->timestamps();
         });
